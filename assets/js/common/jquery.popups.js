@@ -13,8 +13,8 @@
         };
 
         $.extend(settings, options);
-        var container,
-			modal;
+        var container = $('.popup-window'),
+		modal = $('.modal');
         var template = '<div class="popup-window" tabindex="-1" role="dialog" aria-labelledby="popup window">\
                             <a href="#" class="close"><span class="close-btn"></span></a>\
                             <div class="popup-window-content-holder"></div>\
@@ -22,8 +22,8 @@
 
         if ($('.popup-window').length == 0) {
             $('body').append(template);
-			container = $('.popup-window'),
-			modal = $('.modal');
+		container = $('.popup-window'),
+		modal = $('.modal');
         }
 
         return this.each(function () {
