@@ -1,0 +1,125 @@
+.js .popup-content {
+    display: none;
+}
+
+.popup-window {
+    display: none;
+    background: white;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: auto;
+    z-index: 1001;
+    background: #fff;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid #cfd5e7;
+}
+.popup-window .close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 33px;
+	height: 33px;
+	background: url(/assets/images/close-icon.png) no-repeat;
+}
+.popup-window .close span {
+	position: absolute;
+	top: 0;
+	left: -999em;
+}
+
+.popup-window .popup-content-header {
+	border-bottom: 1px dashed #cfd5e7;
+	margin-bottom: 0;
+	background: #f6f6f6;
+	padding: 30px 65px 30px 30px;
+	font-size: 28px;
+	font-size: 2.8rem;
+	line-height: 30px;
+	line-height: 3rem;
+}
+
+.popup-window .popup-content-text {
+	padding: 30px;
+	margin:0;
+}
+
+.popup-window  p {
+	font-size: 14px;
+	font-size: 1.4rem;
+	line-height: 16px;
+	line-height: 1.6rem;
+	margin-bottom: 16px;
+}
+
+
+@media only screen and (min-width: 0) and (max-width:690px) 
+{
+    html.popup-enabled
+       {
+        overflow: hidden;
+        position: relative;
+    }
+	body
+        {
+		position: static;
+		overflow: hidden;
+	}
+
+    .popup-window
+       {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        position: fixed;
+        top:0!important;
+    }
+}
+@media only screen and (min-width: 691px) 
+{
+    html.popup-enabled
+       {
+        overflow: hidden;
+    }
+
+    .modal
+        {
+        background: white;
+        background: rgba(255, 255, 255, 0.5);
+        outline: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: none;
+    }
+
+    .popup-window
+        {
+        width: 668px;
+        margin-left: -344px;
+        top: 0;
+        left: 50%;
+        height: auto;
+        position: fixed;
+    }
+
+    .scrollable-popup
+        {
+        height: 90%;
+        top: 5%;
+    }
+	.scrollable-popup .popup-content-text
+        {
+		overflow: auto;
+	}
+}
+@media only screen and (min-width: 890px) {
+    .popup-window {
+      width: 770px;
+      margin-left: -385px;
+    }
+}
