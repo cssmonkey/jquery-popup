@@ -1,4 +1,4 @@
-jquery-popup
+jQuery-popup
 ============
 
-A jquery popup window plugin
+A jQuery popup window plugin
