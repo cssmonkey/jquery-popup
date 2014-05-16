@@ -13,18 +13,18 @@
         };
 
         $.extend(settings, options);
-        var container = $('.popup-window'),
-			modal = $('.modal');
+        var container,
+			modal;
         var template = '<div class="popup-window" tabindex="-1" role="dialog" aria-labelledby="popup window">\
                             <a href="#" class="close"><span class="close-btn"></span></a>\
                             <div class="popup-window-content-holder"></div>\
                         </div><div class="modal"></div>';
 
-
-        if (container.length == 0) {
-            $('form').append(template);
+        if ($('.popup-window').length == 0) {
+            $('body').append(template);
+			container = $('.popup-window'),
+			modal = $('.modal');
         }
-
 
         return this.each(function () {
 
@@ -32,7 +32,6 @@
             var popupLink = $(this),
                 popupContent = $(popupLink.attr('href')).html(),
                 closeBtnText = settings.closeBtnText,
-                modal,
                 isVisible = false;
 
             // show/hide the popup
@@ -50,48 +49,46 @@
 
                         // Tablet or Desktop screen size
                         if (!isPhoneView) {
-                            
+
                             var popupWindowHeight = container.css({ display: 'block' }).outerHeight(); // get the height of the popup window
 
                             // If the popup window contents is greater than the total height of the page 
                             if (popupWindowHeight > viewportHeight) {
 
                                 container.addClass('scrollable-popup');
-                                popupWindowHeight = (viewportHeight/100)*90;
+                                popupWindowHeight = (viewportHeight / 100) * 90;
 
                                 var headerHeight = $('.popup-content-header', container).outerHeight(),
                                     popupBodyHeight = popupWindowHeight - headerHeight - 2;
 
                                 $('.popup-content-text', container).outerHeight(popupBodyHeight);
 
-                                
+
                             }
-                            // If the popup window contents is greater than the total height of the viewport 
-                            //else if (popupWindowHeight > viewportHeight) {
-                            //    container.css({ top: '10%' });
-                            //}
+                                // If the popup window contents is greater than the total height of the viewport 
+                                //else if (popupWindowHeight > viewportHeight) {
+                                //    container.css({ top: '10%' });
+                                //}
                             else {
                                 container.css({ top: '50%', marginTop: -(popupWindowHeight / 2) });
                             }
 
                             container.css({ display: 'none' });
-
+                            displayPopup();
                         }
                         else {
-
-                            //var positionTop = $(window).scrollTop();
                             container.removeAttr('style');
+                            displayPopup();
                         }
-
-                        displayPopup();
 
                         isVisible = true;
                     }
                     setLayout();
 
                     $(window).smartresize(function () {
-                        if(isVisible == true)
+                        if (isVisible == true) {
                             setLayout();
+                        }
                     });
 
                     function displayPopup() {
@@ -102,6 +99,10 @@
                         container.fadeIn(function () {
                             $(this).focus();
                             $(window).scrollTop(scrollPosition); // set the window scroll position after focus of popup window to prevent page jumping scroll postion
+                            // optional callback function
+                            if (callback) {
+                                callback();
+                            }
                         });
                         modal.fadeIn();
                     }
@@ -168,9 +169,6 @@
 
             init();
 
-            // optional callback function
-            if (callback)
-                callback();
         });
     };
 

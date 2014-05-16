@@ -61,7 +61,7 @@
         overflow: hidden;
         position: relative;
     }
-	body
+	html.popup-enabled body
         {
 		position: static;
 		overflow: hidden;
