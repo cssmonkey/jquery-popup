@@ -21,7 +21,7 @@
 	right: 20px;
 	width: 33px;
 	height: 33px;
-	background: url(/assets/images/close-icon.png) no-repeat;
+	background: url(../images/close-icon.png) no-repeat;
 }
 .popup-window .close span {
 	position: absolute;
